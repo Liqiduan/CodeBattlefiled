@@ -4,7 +4,7 @@ from cocos.sprite import Sprite
 class Human(Sprite):
     def __init__(self, name="Hero"):
         self.name = name
-        Sprite.__init__(self, "man.gif")
+        Sprite.__init__(self, "sources/man.gif")
 
         self.nameLabel = Label(name, 
                 anchor_x='center', anchor_y="bottom")

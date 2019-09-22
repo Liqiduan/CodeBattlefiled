@@ -18,7 +18,7 @@ class Battlefiled(Scene):
         self.background = Layer()
         self.player = PlayerLayer()
 
-        self.map = cocos.tiles.load('map.tmx')['map']
+        self.map = cocos.tiles.load('sources/map.tmx')['map']
         self.map.set_view(0,0,16*32,16*32)
 
         self.add(self.background)
