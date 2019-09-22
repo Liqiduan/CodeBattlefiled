@@ -1,20 +1,8 @@
 from cocos.layer import Layer
 from cocos.scene import Scene
-from cocos.sprite import Sprite
 from cocos.text import Label
 
-class PlayerLayer(Layer):
-    def __init__(self):
-        Layer.__init__(self)
-        self.players = {}
-
-    def add(self, player):
-        player.position = 320,240
-        self.players[player.name] = player
-        Layer.add(self, player)
-
-    def get(self, name):
-        return self.players[name]
+from player import PlayerLayer
 
 class Battlefiled(Scene):
     def __init__(self):
