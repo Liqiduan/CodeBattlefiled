@@ -1,3 +1,4 @@
+from math import sqrt
 from cocos.cocosnode import CocosNode
 from cocos.layer import Layer
 from cocos.actions import MoveTo
@@ -26,9 +27,11 @@ class Player(CocosNode):
         return c.x, c.y
 
 class PlayerLayer(Layer):
+    is_event_handler = True
     def __init__(self):
         Layer.__init__(self)
         self.players = {}
+        self.action = None
 
     def add(self, player):
         self.players[player.name] = player
@@ -36,3 +39,15 @@ class PlayerLayer(Layer):
 
     def get(self, name):
         return self.players[name]
+    
+    def getAll(self):
+        return self.players.values()
+
+    def on_mouse_press(self, x, y, buttons, modifier):
+        p = self.players.get('Hero')
+
+        if not self.action == None:
+            p.remove_action(self.action)
+
+        self.action = p.do(
+                MoveTo((x, y), duration=sqrt(x**2 + y**2)/32.0))
